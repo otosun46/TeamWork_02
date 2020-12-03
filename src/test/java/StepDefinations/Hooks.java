@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class _02_Hooks { // yani bütün senaryolara kanca atar gibi, öncesinde ve sonrasınd açalışıyor.
+public class Hooks { // yani bütün senaryolara kanca atar gibi, öncesinde ve sonrasınd açalışıyor.
 
     String simdi = LocalTime.now().format(DateTimeFormatter.ofPattern("HH_mm_ss"));
 
