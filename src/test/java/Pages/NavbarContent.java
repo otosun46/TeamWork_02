@@ -132,6 +132,7 @@ public class NavbarContent extends _Parent {
             case "discounts":
                 myElement = discounts;
                 break;
+
             case "entranceExams":
                 myElement = entranceExams;
                 break;
