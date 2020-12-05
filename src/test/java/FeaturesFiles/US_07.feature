@@ -34,3 +34,4 @@ Feature: User should be able to use Notifications Page functionality
     And When searching by  "Announcement_01", the results should be matched the search terms.
     Then User  should be able to delete the Notification
     And User should be able to view the verification message successfully
+#    Birlestirme islemini takip icin eklendi
