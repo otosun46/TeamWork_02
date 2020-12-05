@@ -7,10 +7,13 @@ Feature: User should be able to use Nationalities Page functionality
 
     Then User must login successfully
 
-    Scenario:
+  Scenario:
 
-    When User should be able to create new Nationalites
-    When User should be able to update an existant Nationality
-    When User should be able to delete an existant Nationality
+    When User should be able to create new Nationalites "Senacim"
+    When Success message sould be displayed
+    When User should be able from "Senacim" to "Neda" update an existant Nationality
     And  User should not be able to create a Nationality that is exists with similar name
+    When User should be able to delete an existant Nationality "Neda"
+
+
 
