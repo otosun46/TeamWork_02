@@ -12,152 +12,62 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class US_07_Content extends _Parent{
+public class US_07_Content extends _Parent {
     /********************** WEBELEMENT *************************/
 
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
-    private WebElement addButton;
+    private WebElement addButton;//US_07
 
     @FindBy(xpath = "//div[@id='toast-container']")
-    private WebElement msjContainer;
+    private WebElement msjContainer;//US_07
 
     @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']/input")
-    private WebElement poSaName;
-
-    @FindBy(xpath = "//ms-browse-search//input")
-    private WebElement poSaSearchName;
-
-    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.NAME']/input)[2]")
-    private WebElement poName;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName']/input")
-    private WebElement shortName;
-
-    @FindBy(css = "input[placeholder='User Type']")
-    private WebElement userType;
-
-    @FindBy(css = "button[mat-raised-button]")
-    private WebElement saTypeSearch;
-
-    @FindBy(xpath = "//mat-icon[text()='cancel']")
-    private WebElement userTypeCancel;
-
-    @FindBy(css = "input[formcontrolname='description']")
-    private WebElement saModDescription;
-
-    @FindBy(css = "input[formcontrolname='variable']")
-    private WebElement saModVariable;
-
-    @FindBy(css = "mat-select[formcontrolname='modifierType']")
-    private WebElement saModifierType;
-
-    @FindBy(css = "input[formcontrolname='integrationCode']")
-    private WebElement saModIntegrationCode;
-
-    @FindBy(css = "mat-select[formcontrolname='valueType']")
-    private WebElement saModValueType;
-
-    @FindBy(css = "input[formcontrolname='priority']")
-    private WebElement saModPriority;
-
-    @FindBy(css = "ms-currency-field[formcontrolname='amount']>input")
-    private WebElement saModAmount;
-
-    @FindBy(css = "ms-add-button[tooltip='SALARY_MODIFIER.TITLE.NEW_MODIFIER_VARIABLE']")
-    private WebElement saModVaAdd;
-
-    @FindBy(css = "input[formcontrolname='name']")
-    private WebElement saModVaName;
-
-    @FindBy(xpath = "(//input[@formcontrolname='variable'])[2]")
-    private WebElement saModFormulaVariable;
+    private WebElement name;//US_07
 
     @FindBy(css = "mat-select[formcontrolname='type']")
-    private WebElement saModVaType;
+    private WebElement type;//US_07
 
-    @FindBy(css = "ms-button[caption='GENERAL.BUTTON.APPLY']")
-    private WebElement saModVaApply;
+    @FindBy(xpath = "//div/h3[text()='  Notifications ']")
+    private WebElement notificationsPage;//US_07
 
-    @FindBy(css = "ms-save-button")
-    private WebElement saModSave;
+    @FindBy(xpath = "(//div[@role='tab'])[1]")
+    private WebElement tabSMS;//US_07
 
-    @FindBy(css = "input[matinput]")
-    private WebElement saModSearchDesc;
+    @FindBy(xpath = "(//div[@role='tab'])[2]")
+    private WebElement tabEmail;//US_07
+
+    @FindBy(css = "mat-slide-toggle[formcontrolname='active']")
+    private WebElement slideActive;//US_07
+
+    @FindBy(xpath = "(//mat-slide-toggle[@formcontrolname])[2]")
+    private WebElement slideSendSMSorEmail;//US_07
+
+    @FindBy(xpath = "(//ms-integer-field[@formcontrolname])/input")
+    private WebElement daysBefore;//US_07
+
+    @FindBy(xpath = "(//textarea[@formcontrolname])[1]")
+    private WebElement description;//US_07
+
+    @FindBy(xpath = "(//textarea[@formcontrolname])[2]")
+    private WebElement textSMS;//US_07
+
+    @FindBy(xpath = "//iframe")
+    private WebElement emailFrame;//US_07
 
     @FindBy(xpath = "//ms-save-button//button")
-    private WebElement saveButton;
+    private WebElement saveButton;//US_07
+
+    @FindBy(xpath = "//ms-delete-button/button")
+    private WebElement deleteButton;//US_07
+
+    @FindBy(xpath = "//ms-browse-search//input")
+    private WebElement searchName;//US_07
+
+    @FindBy(css = "button[mat-raised-button]")
+    private WebElement searchButton;//US_07
 
     @FindBy(xpath = "//span[text()=' Yes ']")
-    private WebElement yesButton;
-
-    @FindBy(css = "input[formcontrolname='name']")
-    private WebElement saCoName;
-
-    @FindBy(css = "input[data-placeholder='Valid From']")
-    private WebElement saCoValidFrom;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='key']/input")
-    private WebElement saCoKey;
-
-    @FindBy(css = "ms-integer-field[formcontrolname='value']>input")
-    private WebElement saCoValue;
-
-    @FindBy(css = "input[name='datePickerControl']")
-    private WebElement datepickerButton;
-
-    @FindBy(css = "div[id='cdk-overlay-330']")
-    private WebElement newSalaryConstantOverlay;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']/input")
-    private WebElement nameInput;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='code']/input")
-    private WebElement codeInput;
-
-    @FindBy(css = "mat-select[formcontrolname='type']")
-    private WebElement coCeType;
-
-    @FindBy(css = "ms-text-field[formcontrolname='orderNo']>input")
-    private WebElement coCeOrderNo;
-
-    @FindBy(css = "mat-chip-list>div>input")
-    private WebElement coCeExAcCoPrefixes;
-
-    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'BUDGET_EXCEL_TEMPLATE.FIELD.ADD')]//button")
-    private WebElement excTmpAddButton;
-
-    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.NAME']/input)[2]")
-    private WebElement ExcTmpName;
-
-    @FindBy(css = "ms-integer-field[placeholder='BUDGET_EXCEL_TEMPLATE.FIELD.PERIOD_COUNT']>input")
-    private WebElement ExcTmpPeriodCount;
-
-    @FindBy(css = "button[aria-label='Close dialog']")
-    private WebElement closeDiolog;
-
-    @FindBy(css = "mat-select[formcontrolname='category']")
-    private WebElement accountCategory;
-
-    @FindBy(css = "mat-select[formcontrolname='subCategory']")
-    private WebElement accountSubCategory;
-
-    @FindBy(css = "mat-select[formcontrolname='type']")
-    private WebElement accountYype;
-
-    @FindBy(css = "mat-select[formcontrolname='balanceType']")
-    private WebElement accountBalanceType;
-
-    @FindBy(css = "mat-select[formcontrolname='currency']")
-    private WebElement accountCurrency;
-
-    @FindBy(css = "input[formcontrolname='parentAccountCode']")
-    private WebElement parentAccountCode;
-
-    @FindBy(css = "input[placeholder='Integration Codes']")
-    private WebElement integrationCodes;
-
-    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'.ADD')]//button")
-    private WebElement accountAddButton;
+    private WebElement yesButton;//US_07
 
     /********************** WEBELEMENTLIST *************************/
     @FindAll({
@@ -193,12 +103,12 @@ public class US_07_Content extends _Parent{
     @FindAll({
             @FindBy(xpath = "//table/tbody/tr/td[2]")
     })
-    public List<WebElement> nameList;
+    private List<WebElement> nameList;
 
     @FindAll({
             @FindBy(xpath = "//mat-month-view//tr[@role='row']//td[@role='gridcell']")
     })
-    public List<WebElement> dayOfMonth;
+    private List<WebElement> dayOfMonth;
 
     /********************** METHODS *************************/
     /**
@@ -212,140 +122,56 @@ public class US_07_Content extends _Parent{
             case "addButton":
                 myElement = addButton;
                 break;
-            case "poSaName":
-                myElement = poSaName;
+            case "name":
+                myElement = name;
                 break;
-            case "poSaSearchName":
-                myElement = poSaSearchName;
+            case "type":
+                myElement = type;
                 break;
-            case "poName":
-                myElement = poName;
+            case "notificationsPage":
+                myElement = notificationsPage;
                 break;
-            case "shortName":
-                myElement = shortName;
+            case "tabSMS":
+                myElement = tabSMS;
                 break;
-            case "userType":
-                myElement = userType;
+            case "tabEmail":
+                myElement = tabEmail;
                 break;
-            case "saTypeSearch":
-                myElement = saTypeSearch;
+            case "slideActive":
+                myElement = slideActive;
                 break;
-            case "userTypeCancel":
-                myElement = userTypeCancel;
+            case "slideSendSMSorEmail":
+                myElement = slideSendSMSorEmail;
                 break;
-            case "saModDescription":
-                myElement = saModDescription;
+            case "daysBefore":
+                myElement = daysBefore;
                 break;
-            case "saModVariable":
-                myElement = saModVariable;
+            case "description":
+                myElement = description;
                 break;
-            case "saModifierType":
-                myElement = saModifierType;
+            case "textSMS":
+                myElement = textSMS;
                 break;
-            case "saModIntegrationCode":
-                myElement = saModIntegrationCode;
-                break;
-            case "saModValueType":
-                myElement = saModValueType;
-                break;
-            case "saModPriority":
-                myElement = saModPriority;
-                break;
-            case "saModAmount":
-                myElement = saModAmount;
-                break;
-            case "saModVaAdd":
-                myElement = saModVaAdd;
-                break;
-            case "saModVaName":
-                myElement = saModVaName;
-                break;
-            case "saModFormulaVariable":
-                myElement = saModFormulaVariable;
-                break;
-            case "saModVaType":
-                myElement = saModVaType;
-                break;
-            case "saModVaApply":
-                myElement = saModVaApply;
-                break;
-            case "saModSave":
-                myElement = saModSave;
-                break;
-            case "saModSearchDesc":
-                myElement = saModSearchDesc;
+            case "emailFrame":
+                myElement = emailFrame;
                 break;
             case "saveButton":
                 myElement = saveButton;
                 break;
+            case "deleteButton":
+                myElement = deleteButton;
+                break;
+            case "msjContainer":
+                myElement = msjContainer;
+                break;
+            case "searchButton":
+                myElement = searchButton;
+                break;
+            case "searchName":
+                myElement = searchName;
+                break;
             case "yesButton":
                 myElement = yesButton;
-                break;
-            case "saCoName":
-                myElement = saCoName;
-                break;
-            case "saCoValidFrom":
-                myElement = saCoValidFrom;
-                break;
-            case "saCoKey":
-                myElement = saCoKey;
-                break;
-            case "saCoValue":
-                myElement = saCoValue;
-                break;
-            case "datepickerButton":
-                myElement = datepickerButton;
-                break;
-            case "nameInput":
-                myElement = nameInput;
-                break;
-            case "codeInput":
-                myElement = codeInput;
-                break;
-            case "coCeType":
-                myElement = coCeType;
-                break;
-            case "coCeOrderNo":
-                myElement = coCeOrderNo;
-                break;
-            case "coCeExAcCoPrefixes":
-                myElement = coCeExAcCoPrefixes;
-                break;
-            case "ExcTmpName":
-                myElement = ExcTmpName;
-                break;
-            case "ExcTmpPeriodCount":
-                myElement = ExcTmpPeriodCount;
-                break;
-            case "closeDiolog":
-                myElement = closeDiolog;
-                break;
-            case "accountCategory":
-                myElement = accountCategory;
-                break;
-            case "accountSubCategory":
-                myElement = accountSubCategory;
-                break;
-            case "accountYype":
-                myElement = accountYype;
-                break;
-            case "accountBalanceType":
-                myElement = accountBalanceType;
-                break;
-            case "accountCurrency":
-                myElement = accountCurrency;
-                break;
-            case "parentAccountCode":
-                myElement = parentAccountCode;
-                break;
-            case "integrationCodes":
-                myElement = integrationCodes;
-                break;
-            case "accountAddButton":
-                myElement = accountAddButton;
-                break;
-            case "excTmpAddButton":
-                myElement = excTmpAddButton;
                 break;
         }
         return myElement;
@@ -398,6 +224,7 @@ public class US_07_Content extends _Parent{
      * @param value
      */
     public void findElementAndSendKeysFunction(String element, String value) {
+        scrollToElement(findWebElement(element));
         sendKeysFunction(findWebElement(element), value);
     }
 
@@ -454,12 +281,13 @@ public class US_07_Content extends _Parent{
             }
         }
     }
-    public void switchToFrame(){
+
+    public void switchToFrame() {
         driver.switchTo().parentFrame();
     }
 
-    public void invisibleElementClick(String element){
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+    public void invisibleElementClick(String element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", findWebElement(element));
     }
 
@@ -469,7 +297,8 @@ public class US_07_Content extends _Parent{
             findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
         }
     }
-    public void usingElementsInTheDataTableAndSendKeysSelectOptions(DataTable elements,String listName) {
+
+    public void usingElementsInTheDataTableAndSelectOptions(DataTable elements, String listName) {
         List<String> elementsName = elements.asList(String.class);
         for (int i = 0; i < elementsName.size(); i++) {
             findElementAndClickFunction(elementsName.get(i));

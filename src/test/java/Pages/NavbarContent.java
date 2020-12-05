@@ -14,6 +14,9 @@ public class NavbarContent extends _Parent {
     @FindBy(xpath = "//span[text()='Messaging']")
     private WebElement messaging;
 
+    @FindBy(xpath = "//span[text()='Notifications']")
+    private WebElement notifications;
+
     @FindBy(xpath = "//span[text()='Parameters']")
     private WebElement parameters;
 
@@ -106,6 +109,14 @@ public class NavbarContent extends _Parent {
 
             case "parameters":
                 myElement = parameters;
+                break;
+
+            case "messaging":
+                myElement = messaging;
+                break;
+
+            case "notifications":
+                myElement = notifications;
                 break;
 
             case "country":
