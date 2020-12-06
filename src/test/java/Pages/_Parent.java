@@ -40,7 +40,7 @@ public class _Parent {
     public void sendKeysFunction(WebElement element, String value) {
         waitUntilVisible(element);// elelman görünüt olana kadar bekle
         scrollToElement(element);// elemana kadar scroll yap
-        element.clear();// eleman clear yap
+//        element.clear();// eleman clear yap
         element.sendKeys(value);// value yi gönder
     }
 
@@ -65,6 +65,11 @@ public class _Parent {
     public void scrollToElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void scrollOnPage(int value) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,100)");
     }
 
     public void verifyElementContainsText(WebElement element, String text) {

@@ -42,6 +42,9 @@ public class US_07_Content extends _Parent {
     @FindBy(xpath = "(//mat-slide-toggle[@formcontrolname])[2]")
     private WebElement slideSendSMSorEmail;
 
+    @FindBy(css = "input[formcontrolname='subject']")
+    private WebElement subject;
+
     @FindBy(xpath = "(//ms-integer-field[@formcontrolname])/input")
     private WebElement daysBefore;
 
@@ -53,6 +56,12 @@ public class US_07_Content extends _Parent {
 
     @FindBy(xpath = "//iframe")
     private WebElement emailFrame;
+
+    @FindBy(css = "iframe>")
+    private WebElement emailFramealt;
+
+    @FindBy(css = "body[id='tinymce']>p")
+    private WebElement emailBody;
 
     @FindBy(xpath = "//ms-save-button//button")
     private WebElement saveButton;
@@ -143,6 +152,9 @@ public class US_07_Content extends _Parent {
             case "slideSendSMSorEmail":
                 myElement = slideSendSMSorEmail;
                 break;
+            case "subject":
+                myElement = subject;
+                break;
             case "daysBefore":
                 myElement = daysBefore;
                 break;
@@ -151,6 +163,9 @@ public class US_07_Content extends _Parent {
                 break;
             case "textSMS":
                 myElement = textSMS;
+                break;
+            case "emailBody":
+                myElement = emailBody;
                 break;
             case "emailFrame":
                 myElement = emailFrame;
@@ -172,6 +187,9 @@ public class US_07_Content extends _Parent {
                 break;
             case "yesButton":
                 myElement = yesButton;
+                break;
+            case "emailFramealt":
+                myElement = emailFramealt;
                 break;
         }
         return myElement;

@@ -27,7 +27,8 @@ Feature: User should be able to use Notifications Page functionality
 #      | description | Submitted for testing |
 #    And  Notification should be activated and able to select mail
 #    Then Notification fields should be filled in and saved
-#      | textSMS    | This is a test message. If you have received this message, the message system is working fine. |
+#      | subject   | Annonucement|
+#      | emailFrame   | This is a test message. If you have received this message, the message system is working fine. |
 #    And User should be able to view the verification message successfully
 
   Scenario: Edit the Notification
@@ -44,4 +45,3 @@ Feature: User should be able to use Notifications Page functionality
     And When searching by  "Announcement_01", the results should be matched the search terms.
     Then User  should be able to delete the Notification
     And User should be able to view the verification message successfully
-#    Birlestirme islemini takip icin eklendi
