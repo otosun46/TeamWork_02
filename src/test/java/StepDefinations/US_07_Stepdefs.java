@@ -37,11 +37,25 @@ public class US_07_Stepdefs {
         us07Content.usingElementsInTheDataTableAndSendKeys(elements);
     }
 
-    @And("^Notification should be activated and able to select SMS or mail$")
-    public void notificationShouldBeActivatedAndAbleToSelectSMSOrMail() {
+    @And("^Notification should be activated and able to select SMS$")
+    public void notificationShouldBeActivatedAndAbleToSelectSMS() {
         //us07Content.findElementAndClickFunction("slideActive");
         us07Content.findElementAndClickFunction("tabSMS");
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
+    }
+
+    @And("^Notification should be activated and able to select mail$")
+    public void notificationShouldBeActivatedAndAbleToSelectEmail() {
+        //us07Content.findElementAndClickFunction("slideActive");
+        us07Content.findElementAndClickFunction("tabEmail");
+        us07Content.beklet(1000);
+        us07Content.findElementAndClickFunction("slideSendSMSorEmail");
+
+       // us07Content.switchToFrame();
+
+      //  us07Content.findElementAndClickFunction("emailFrame");
+
+        us07Content.beklet(500);
     }
 
     @Then("^Notification fields should be filled in and saved$")
@@ -67,13 +81,13 @@ public class US_07_Stepdefs {
         us07Content.editAndDeleteFunction(temp, "edit");
         us07Content.usingElementsInTheDataTableAndSendKeys(elements);
         us07Content.findElementAndClickFunction("saveButton");
-        temp="";
+        temp = "";
     }
 
     @Then("^User  should be able to delete the Notification$")
     public void userShouldBeAbleToDeleteTheNotification() {
         us07Content.editAndDeleteFunction(temp, "delete");
         us07Content.findElementAndClickFunction("yesButton");
-        temp="";
+        temp = "";
     }
 }

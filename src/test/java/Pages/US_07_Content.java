@@ -16,58 +16,67 @@ public class US_07_Content extends _Parent {
     /********************** WEBELEMENT *************************/
 
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
-    private WebElement addButton;//US_07
+    private WebElement addButton;
 
     @FindBy(xpath = "//div[@id='toast-container']")
-    private WebElement msjContainer;//US_07
+    private WebElement msjContainer;
 
     @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']/input")
-    private WebElement name;//US_07
+    private WebElement name;
 
     @FindBy(css = "mat-select[formcontrolname='type']")
-    private WebElement type;//US_07
+    private WebElement type;
 
     @FindBy(xpath = "//div/h3[text()='  Notifications ']")
-    private WebElement notificationsPage;//US_07
+    private WebElement notificationsPage;
 
     @FindBy(xpath = "(//div[@role='tab'])[1]")
-    private WebElement tabSMS;//US_07
+    private WebElement tabSMS;
 
     @FindBy(xpath = "(//div[@role='tab'])[2]")
-    private WebElement tabEmail;//US_07
+    private WebElement tabEmail;
 
     @FindBy(css = "mat-slide-toggle[formcontrolname='active']")
-    private WebElement slideActive;//US_07
+    private WebElement slideActive;
 
     @FindBy(xpath = "(//mat-slide-toggle[@formcontrolname])[2]")
-    private WebElement slideSendSMSorEmail;//US_07
+    private WebElement slideSendSMSorEmail;
+
+    @FindBy(css = "input[formcontrolname='subject']")
+    private WebElement subject;
 
     @FindBy(xpath = "(//ms-integer-field[@formcontrolname])/input")
-    private WebElement daysBefore;//US_07
+    private WebElement daysBefore;
 
     @FindBy(xpath = "(//textarea[@formcontrolname])[1]")
-    private WebElement description;//US_07
+    private WebElement description;
 
     @FindBy(xpath = "(//textarea[@formcontrolname])[2]")
-    private WebElement textSMS;//US_07
+    private WebElement textSMS;
 
     @FindBy(xpath = "//iframe")
-    private WebElement emailFrame;//US_07
+    private WebElement emailFrame;
+
+    @FindBy(css = "iframe>")
+    private WebElement emailFramealt;
+
+    @FindBy(css = "body[id='tinymce']>p")
+    private WebElement emailBody;
 
     @FindBy(xpath = "//ms-save-button//button")
-    private WebElement saveButton;//US_07
+    private WebElement saveButton;
 
     @FindBy(xpath = "//ms-delete-button/button")
-    private WebElement deleteButton;//US_07
+    private WebElement deleteButton;
 
     @FindBy(xpath = "//ms-browse-search//input")
-    private WebElement searchName;//US_07
+    private WebElement searchName;
 
     @FindBy(css = "button[mat-raised-button]")
-    private WebElement searchButton;//US_07
+    private WebElement searchButton;
 
     @FindBy(xpath = "//span[text()=' Yes ']")
-    private WebElement yesButton;//US_07
+    private WebElement yesButton;
 
     /********************** WEBELEMENTLIST *************************/
     @FindAll({
@@ -78,7 +87,7 @@ public class US_07_Content extends _Parent {
     @FindAll({
             @FindBy(xpath = "//span[@class='mat-option-text']")
     })
-    public List<WebElement> userTypeAllOptions;
+    private List<WebElement> userTypeAllOptions;
 
     @FindAll({
             @FindBy(xpath = "//ms-delete-button/button")
@@ -143,6 +152,9 @@ public class US_07_Content extends _Parent {
             case "slideSendSMSorEmail":
                 myElement = slideSendSMSorEmail;
                 break;
+            case "subject":
+                myElement = subject;
+                break;
             case "daysBefore":
                 myElement = daysBefore;
                 break;
@@ -151,6 +163,9 @@ public class US_07_Content extends _Parent {
                 break;
             case "textSMS":
                 myElement = textSMS;
+                break;
+            case "emailBody":
+                myElement = emailBody;
                 break;
             case "emailFrame":
                 myElement = emailFrame;
@@ -172,6 +187,9 @@ public class US_07_Content extends _Parent {
                 break;
             case "yesButton":
                 myElement = yesButton;
+                break;
+            case "emailFramealt":
+                myElement = emailFramealt;
                 break;
         }
         return myElement;
@@ -262,21 +280,15 @@ public class US_07_Content extends _Parent {
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        List<WebElement> btnList = new ArrayList<>();
-        // invisible olma beklemesini, display ise şartına bağladık, yani
-        // gözüküyorsa kaybolana kadar bekle.
-        beklet(500);
-//        if (msjContainers.size() > 0) {
-//            if (msjContainer.isDisplayed())
-//                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
-//        }
+        waitUntilClickable(searchButton);
+        List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
-            btnList = waitVisibleListAllElement(deleteButtonList);
-        } else btnList = waitVisibleListAllElement(editButtonList);
+            btnList = deleteButtonList;
+        } else btnList = editButtonList;
 
-        for (int i = 0; i < waitVisibleListAllElement(nameList).size(); i++) {
-            System.out.println(waitVisibleListAllElement(nameList).get(i).getText());
-            if (waitVisibleListAllElement(nameList).get(i).getText().equalsIgnoreCase(countryName)) {
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.println(nameList.get(i).getText());
+            if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
                 clickFunction(btnList.get(i));
             }
         }
