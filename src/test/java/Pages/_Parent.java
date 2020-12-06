@@ -67,6 +67,11 @@ public class _Parent {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public void scrollOnPage(int value) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,100)");
+    }
+
     public void verifyElementContainsText(WebElement element, String text) {
         // waitUntilVisible(element);
         wait.until(ExpectedConditions.textToBePresentInElement(element, text));
