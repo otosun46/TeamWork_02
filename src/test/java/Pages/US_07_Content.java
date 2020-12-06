@@ -78,7 +78,7 @@ public class US_07_Content extends _Parent {
     @FindAll({
             @FindBy(xpath = "//span[@class='mat-option-text']")
     })
-    public List<WebElement> userTypeAllOptions;
+    private List<WebElement> userTypeAllOptions;
 
     @FindAll({
             @FindBy(xpath = "//ms-delete-button/button")
