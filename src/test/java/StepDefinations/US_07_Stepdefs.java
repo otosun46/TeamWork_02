@@ -37,8 +37,15 @@ public class US_07_Stepdefs {
         us07Content.usingElementsInTheDataTableAndSendKeys(elements);
     }
 
-    @And("^Notification should be activated and able to select SMS or mail$")
-    public void notificationShouldBeActivatedAndAbleToSelectSMSOrMail() {
+    @And("^Notification should be activated and able to select SMS$")
+    public void notificationShouldBeActivatedAndAbleToSelectSMS() {
+        //us07Content.findElementAndClickFunction("slideActive");
+        us07Content.findElementAndClickFunction("tabSMS");
+        us07Content.findElementAndClickFunction("slideSendSMSorEmail");
+    }
+
+    @And("^Notification should be activated and able to select mail$")
+    public void notificationShouldBeActivatedAndAbleToSelectMail() {
         //us07Content.findElementAndClickFunction("slideActive");
         us07Content.findElementAndClickFunction("tabSMS");
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
