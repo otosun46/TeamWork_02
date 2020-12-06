@@ -297,6 +297,10 @@ public class US_07_Content extends _Parent {
     public void switchToFrame() {
         driver.switchTo().parentFrame();
     }
+    //metin
+    public void switchToFrame(String frame) {
+        driver.switchTo().frame(findWebElement(frame));
+    }
 
     public void invisibleElementClick(String element) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -317,6 +321,14 @@ public class US_07_Content extends _Parent {
             i++;
             findElementAndSelectOption(listName, elementsName.get(i));
         }
+    }
+    //metin
+    public void writeInPElements( ){
+        scrollToElement(findWebElement("emailBody"));
+
+        System.out.println("meto");
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].textContent = arguments[1];", findWebElement("emailBody"), "This is a test");
     }
 
 }

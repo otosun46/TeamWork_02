@@ -35,6 +35,7 @@ public class US_07_Stepdefs {
         us07Content.findElementAndClickFunction("type");
         us07Content.findElementAndSelectOption("option", arg0);
         us07Content.usingElementsInTheDataTableAndSendKeys(elements);
+
     }
 
     @And("^Notification should be activated and able to select SMS$")
@@ -51,9 +52,12 @@ public class US_07_Stepdefs {
         us07Content.beklet(1000);
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
 
-       // us07Content.switchToFrame();
 
-      //  us07Content.findElementAndClickFunction("emailFrame");
+        us07Content.switchToFrame("emailFrame");
+
+        //us07Content.findElementAndClickFunction("emailFrame");
+        //metin
+        us07Content.writeInPElements();
 
         us07Content.beklet(500);
     }
