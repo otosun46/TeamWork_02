@@ -26,12 +26,12 @@ public class US_07_Stepdefs {
     @When("^User should be able to view Notifications Page$")
     public void userShouldBeAbleToViewNotificationsPage() {
         us07Content.findElementAndVerifyDisplayed("notificationsPage");
-        System.out.println("sayfaya girildigi dogrulandi");
+        us07Content.findElementAndClickFunction("addButton");
     }
 
     @Then("^User  should be able to create new Notification in \"([^\"]*)\" type$")
     public void userShouldBeAbleToCreateNewNotificationInType(String arg0, DataTable elements) {
-        us07Content.findElementAndClickFunction("addButton");
+
         us07Content.findElementAndClickFunction("type");
         us07Content.findElementAndSelectOption("option", arg0);
         us07Content.usingElementsInTheDataTableAndSendKeys(elements);
@@ -46,16 +46,9 @@ public class US_07_Stepdefs {
 
     @And("^Notification should be activated and able to select mail$")
     public void notificationShouldBeActivatedAndAbleToSelectEmail() {
-        //us07Content.findElementAndClickFunction("slideActive");
         us07Content.findElementAndClickFunction("tabEmail");
-        us07Content.beklet(1000);
+        us07Content.beklet(750);
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
-
-       // us07Content.switchToFrame();
-
-      //  us07Content.findElementAndClickFunction("emailFrame");
-
-        us07Content.beklet(500);
     }
 
     @Then("^Notification fields should be filled in and saved$")
@@ -64,10 +57,21 @@ public class US_07_Stepdefs {
         us07Content.findElementAndClickFunction("saveButton");
     }
 
+    @Then("^Notification fields should be filled in mail and saved$")
+    public void notificationFieldsShouldBeFilledInMailAndSaved(DataTable elements) {
+        us07Content.switchToFrame("emailFrame");
+        us07Content.writeInPElements(elements);
+        us07Content.switchToFrame();
+        us07Content.beklet(500);
+        us07Content.findElementAndClickFunction("emailFrame");
+        us07Content.findElementAndClickFunction("saveButton");
+    }
+
     @And("^User should be able to view the verification message successfully$")
     public void userShouldBeAbleToViewTheVerificationMessageSuccessfully() {
         us07Content.findElementAndVerifyContainsText("msjContainer", "successfully");
     }
+
 
     @And("^When searching by  \"([^\"]*)\", the results should be matched the search terms\\.$")
     public void whenSearchingByTheResultsShouldBeMatchedTheSearchTerms(String arg0) {
