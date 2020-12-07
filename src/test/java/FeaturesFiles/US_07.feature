@@ -19,29 +19,33 @@ Feature: User should be able to use Notifications Page functionality
       | textSMS    | This is a test message. If you have received this message, the message system is working fine. |
     And User should be able to view the verification message successfully
 
-#  Scenario: Create new Notification (email)
-#    Given Navigate to Notifications page
-#    When User should be able to view Notifications Page
-#    Then User  should be able to create new Notification in "1" type
-#      | name        | Announcement_01       |
-#      | description | Submitted for testing |
-#    And  Notification should be activated and able to select mail
-#    Then Notification fields should be filled in and saved
-#      | subject   | Annonucement|
-#      | emailFrame   | This is a test message. If you have received this message, the message system is working fine. |
-#    And User should be able to view the verification message successfully
+  Scenario: Create new Notification (email)
+    Given Navigate to Notifications page
+    When User should be able to view Notifications Page
+    And  Notification should be activated and able to select mail
+    Then User  should be able to create new Notification in "1" type
+      | name        | Announcement_02       |
+      | description | Submitted for testing |
+      | subject     | Annonucement          |
+
+    Then Notification fields should be filled in mail and saved
+      | emailBody | This is a test message. If you have received this message, the message system is working fine. |
+    And User should be able to view the verification message successfully
 
   Scenario: Edit the Notification
     Given Navigate to Notifications page
-    When User should be able to view Notifications Page
     And When searching by  "Announcement_01", the results should be matched the search terms.
     Then User  should be able to edit the Notification
       | textSMS | This is a test message changed. |
     And User should be able to view the verification message successfully
 
-  Scenario: Delete the Notification
+ Scenario Outline: Delete the Notification
     Given Navigate to Notifications page
-    When User should be able to view Notifications Page
-    And When searching by  "Announcement_01", the results should be matched the search terms.
+    And When searching by  "<AnnouncementName>", the results should be matched the search terms.
     Then User  should be able to delete the Notification
     And User should be able to view the verification message successfully
+
+   Examples:
+   |AnnouncementName|
+   |Announcement_01|
+   |Announcement_02|
