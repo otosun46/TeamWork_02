@@ -38,12 +38,18 @@ public class US_06_Content extends _Parent {
     private WebElement nameInput;
     @FindBy(xpath = "//div[@class='ng-star-inserted']/button[1]")
     private WebElement deleteYesButton;
-    @FindBy(xpath = "//ms-dialog-content//div[contains(@id,'mat-select-value')]/span[text()='Stage']")
+    @FindBy(xpath = "//ms-dialog-content//div[contains(@id,'mat-select-value')]//span")
     private WebElement stageInput;
     @FindBy(xpath = "//textarea[@formcontrolname='description']")
     private WebElement descriptionDoInput;
     @FindBy(xpath = "//div[@class='cdk-overlay-connected-position-bounding-box']")
     private WebElement dialogContainerHeader;
+    @FindBy(xpath = "//div/h3[text()='  Document Types ']")
+    private WebElement documentTypesPage;
+    @FindBy(xpath = "//ms-browse-search//input")
+    private WebElement searchName;
+    @FindBy(css = "button[mat-raised-button]")
+    private WebElement searchButton;
 
 
     //contains olabilir
@@ -89,6 +95,7 @@ public class US_06_Content extends _Parent {
      */
     public WebElement findWebElement(String webElementName) {
         switch (webElementName) {
+
             case "addButton":
                 myElement = addButton;
                 break;
@@ -127,6 +134,15 @@ public class US_06_Content extends _Parent {
                 break;
             case "deleteYesButton":
                 myElement = deleteYesButton;
+                break;
+            case "documentTypesPage":
+                myElement = documentTypesPage;
+                break;
+            case "searchName":
+                myElement = searchName;
+                break;
+            case "searchButton":
+                myElement = searchButton;
                 break;
 
         }
@@ -208,22 +224,17 @@ public class US_06_Content extends _Parent {
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        List<WebElement> btnList = new ArrayList<>();
-        // invisible olma beklemesini, display ise şartına bağladık, yani
-        // gözüküyorsa kaybolana kadar bekle.
-        beklet(500);
-//        if (msjContainers.size() > 0) {
-//            if (msjContainer.isDisplayed())
-//                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
-//        }
+        waitUntilClickable(searchButton);
+        List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
-            btnList = waitVisibleListAllElement(deleteButtonList);
-        } else btnList = waitVisibleListAllElement(editButtonList);
+            btnList = deleteButtonList;
+        } else btnList = editButtonList;
 
-        for (int i = 0; i < waitVisibleListAllElement(nameList).size(); i++) {
-            System.out.println(waitVisibleListAllElement(nameList).get(i).getText());
-            if (waitVisibleListAllElement(nameList).get(i).getText().equalsIgnoreCase(countryName)) {
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.println(nameList.get(i).getText());
+            if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
                 clickFunction(btnList.get(i));
+                break;
             }
         }
     }
@@ -253,18 +264,34 @@ public class US_06_Content extends _Parent {
         }
     }
 
-    public void clickNThElementFromList(String list, int rowNumber) {
+    public void clickNThElementFromList(String list, DataTable elements) {
+        List<List<String>> elementsNameAndValue = elements.asLists(String.class);
 
-        clickFunction(findWebElementList(list).get(rowNumber - 1));
+        //for (int i = 0; i < elementsNameAndValue.size(); i++) {
+        findWebElementList(list);
+
+        findElementAndSendKeysFunction(elementsNameAndValue.get(0).get(0), elementsNameAndValue.get(0).get(1));
+        // }
+
+
+        findElementAndClickFunction("stageInput");
+
+        clickFunction(findWebElementList(list).get(Integer.parseInt(elementsNameAndValue.get(1).get(1))));
     }
 
 
     //deneme calisti
     public void editExistingElementFromAList(String searchedText) {
+
+
+        findWebElementList("nameList");
+        findWebElementList("editButtonList");
+
         for (int i = 0; i < nameList.size(); i++) {
-            beklet(1000);
+
             if (nameList.get(i).getText().equalsIgnoreCase(searchedText)) {
                 editButtonList.get(i).click();
+                break;
             }
         }
         Assert.assertFalse(nameList.contains("searchedText"));
@@ -272,14 +299,14 @@ public class US_06_Content extends _Parent {
     }
 
     public void deleteExistingElement(String searchedText) {
+        findWebElementList("nameList");
+        findWebElementList("deleteButtonList");
         for (int i = 0; i < nameList.size(); i++) {
-            beklet(1000);
+
 
             if (nameList.get(i).getText().equalsIgnoreCase(searchedText)) {
                 deleteButtonList.get(i).click();
                 break;
-            } else {
-                System.out.println(nameList.get(i));
             }
         }
 
