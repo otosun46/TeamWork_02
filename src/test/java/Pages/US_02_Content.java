@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class US_02_Content extends _Parent{
+public class US_02_Content extends _Parent {
     public US_02_Content() {
         PageFactory.initElements(driver, this);
     }
 
-@FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
-private WebElement addButton;
+    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
+    private WebElement addButton;
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']/input")
     private WebElement nameInput;
     @FindBy(xpath = "//div[@id='toast-container']")
@@ -91,7 +91,7 @@ private WebElement addButton;
                 myElement = addButton;
                 break;
 
-                case "nameInput":
+            case "nameInput":
                 myElement = nameInput;
                 break;
 
@@ -101,16 +101,16 @@ private WebElement addButton;
             case "yesButton":
                 myElement = yesButton;
                 break;
-                case "closeDialog":
+            case "closeDialog":
                 myElement = closeDialog;
                 break;
-                case "msjContainer":
+            case "msjContainer":
                 myElement = msjContainer;
                 break;
-                case "searchName":
+            case "searchName":
                 myElement = searchName;
                 break;
-                case "searchButton":
+            case "searchButton":
                 myElement = searchButton;
                 break;
 
@@ -215,12 +215,13 @@ private WebElement addButton;
             }
         }
     }
-    public void switchToFrame(){
+
+    public void switchToFrame() {
         driver.switchTo().parentFrame();
     }
 
-    public void invisibleElementClick(String element){
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+    public void invisibleElementClick(String element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", findWebElement(element));
     }
 
@@ -230,7 +231,8 @@ private WebElement addButton;
             findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
         }
     }
-    public void usingElementsInTheDataTableAndSendKeysSelectOptions(DataTable elements,String listName) {
+
+    public void usingElementsInTheDataTableAndSendKeysSelectOptions(DataTable elements, String listName) {
         List<String> elementsName = elements.asList(String.class);
         for (int i = 0; i < elementsName.size(); i++) {
             findElementAndClickFunction(elementsName.get(i));

@@ -30,7 +30,7 @@ public class US_02_Stepdefs {
 
     @When("^User should be able from \"([^\"]*)\" to \"([^\"]*)\" update an existant Nationality$")
     public void userShouldBeAbleFromToUpdateAnExistantNationality(String arg0, String arg1){
-        System.out.println("ffff");
+        us_02_content.scrollToElement(us_02_content.findWebElement("searchName"));
         us_02_content.findElementAndSendKeysFunction("searchName",arg0);
         us_02_content.findElementAndClickFunction("searchButton");
         us_02_content.editAndDeleteFunction(arg0,"edit");
