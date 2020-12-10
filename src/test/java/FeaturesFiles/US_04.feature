@@ -10,5 +10,6 @@ Feature:User should be able to use Discounts Page functionality
   Scenario:
 
   When User should be able to create a new Discount
+    And successMessageShouldBeDisplayed
   When User should be able to update an existant Discount
   When  User should be able to delete an existant Discount
