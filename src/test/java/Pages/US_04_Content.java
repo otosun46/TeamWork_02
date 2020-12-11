@@ -31,6 +31,12 @@ public class US_04_Content extends _Parent {
     private WebElement saveButton;
     @FindBy(xpath = "//div[@id='toast-container']")
     private WebElement msjContainer;
+    @FindBy(xpath = "(//ms-text-field[contains(@placeholder,'DISCOUNT.TITLE.DESCRIPTION')])[1]//input")
+    private WebElement descriptionSearch;
+    @FindBy(css = "button[mat-raised-button]")
+    private WebElement searchButton;
+    @FindBy(xpath = "//span[text()=' Yes ']")
+    private WebElement yesButton;
 
 
     //contains olabilir
@@ -91,6 +97,15 @@ public class US_04_Content extends _Parent {
                 break;
             case "msjContainer":
                 myElement = msjContainer;
+                break;
+            case "descriptionSearch":
+                myElement = descriptionSearch;
+                break;
+            case "searchButton":
+                myElement = searchButton;
+                break;
+            case "yesButton":
+                myElement = yesButton;
                 break;
         }
         return myElement;
@@ -158,21 +173,15 @@ public class US_04_Content extends _Parent {
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        List<WebElement> btnList = new ArrayList<>();
-        // invisible olma beklemesini, display ise şartına bağladık, yani
-        // gözüküyorsa kaybolana kadar bekle.
-        beklet(500);
-//        if (msjContainers.size() > 0) {
-//            if (msjContainer.isDisplayed())
-//                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
-//        }
+        waitUntilClickable(searchButton);
+        List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
-            btnList = waitVisibleListAllElement(deleteButtonList);
-        } else btnList = waitVisibleListAllElement(editButtonList);
+            btnList = deleteButtonList;
+        } else btnList = editButtonList;
 
-        for (int i = 0; i < waitVisibleListAllElement(nameList).size(); i++) {
-            System.out.println(waitVisibleListAllElement(nameList).get(i).getText());
-            if (waitVisibleListAllElement(nameList).get(i).getText().equalsIgnoreCase(countryName)) {
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.println(nameList.get(i).getText());
+            if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
                 clickFunction(btnList.get(i));
             }
         }

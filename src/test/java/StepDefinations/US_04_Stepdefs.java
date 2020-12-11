@@ -31,12 +31,24 @@ public class US_04_Stepdefs {
         us_04_content.findElementAndVerifyContainsText("msjContainer", "successfully");
 
     }
+
     @When("^User should be able to update an existant Discount$")
     public void userShouldBeAbleToUpdateAnExistantDiscount() {
+        us_04_content.findElementAndSendKeysFunction("descriptionSearch", "dame");
+        us_04_content.findElementAndClickFunction("searchButton");
+        us_04_content.editAndDeleteFunction("dame", "edit");
+        us_04_content.findElementAndSendKeysFunction("description", "dame1");
+        us_04_content.findElementAndSendKeysFunction("integrationCode", "351");
+        us_04_content.findElementAndSendKeysFunction("Priority", "2");
+        us_04_content.findElementAndClickFunction("saveButton");
     }
 
     @When("^User should be able to delete an existant Discount$")
     public void userShouldBeAbleToDeleteAnExistantDiscount() {
+        us_04_content.findElementAndSendKeysFunction("descriptionSearch", "dame");
+        us_04_content.findElementAndClickFunction("searchButton");
+        us_04_content.editAndDeleteFunction("dame1", "delete");
+        us_04_content.findElementAndClickFunction("yesButton");
     }
 
 }
