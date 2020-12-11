@@ -5,7 +5,7 @@ Feature: User should be able to use Fees Page functionality
     Given Navigate to basqar webpage
     When Enter username "daulet2030@gmail.com" and password "TechnoStudy123@" and click Login button
     Then User must login successfully
-
+  @Regression
   Scenario: User should be able to use Fees Page functionality
     Given Click on the element to navigate to fee page
       | setupOne   |
@@ -20,7 +20,7 @@ Feature: User should be able to use Fees Page functionality
 
     And User should be able to saved and displayed the successfully message
 
-
+  @Regression
   Scenario: User should be able to search Fee Type
     Given Click on the element to navigate to fee page
       | setupOne   |
@@ -32,7 +32,7 @@ Feature: User should be able to use Fees Page functionality
       | feeSearchCode  | TF01   |
 
 
-
+  @Regression
   Scenario: User should be able to update an existent Fee Type
     Given Click on the element to navigate to fee page
       | setupOne   |
@@ -49,7 +49,7 @@ Feature: User should be able to use Fees Page functionality
       | feeIntegrationCode | 067           |
       | feePriority        | 7           |
 
-
+  @Regression
   Scenario: User should be able to delete an existent Fee Type
 
     Given Click on the element to navigate to fee page

@@ -6,14 +6,14 @@ Feature: User should be able to use Documents Page functionality
     When Enter username "daulet2030@gmail.com" and password "TechnoStudy123@" and click Login button
 
     Then User must login successfully
-
+  @Regression
   Scenario:Creating a new Document
     Given Navigate to Document Types Page
     When User should be able to view Document Types Page
     And User should be able to create new Document and view successfully validating the message
       | nameInput       | personForUS_06_Group2 |
       | stageCheckBoxes | 5                     |
-
+  @Regression
   Scenario:Editing a  Document
     Given Navigate to Document Types Page
     When User should be able to view Document Types Page
@@ -21,7 +21,7 @@ Feature: User should be able to use Documents Page functionality
     And User should be able to update an existing Document
       | nameInput       | personForUS_06_Group2_edited |
       | stageCheckBoxes | 3                            |
-
+  @Regression
   Scenario: Delete a Document
     Given Navigate to Document Types Page
     When User should be able to view Document Types Page
