@@ -41,4 +41,9 @@ public class LoginStepsdefs {
     public void userMustLoginSuccessfully() {
         loginContent.findElementAndVerifyDisplayed("dashboard");
     }
+
+    @When("^Enter username and password and click Login button$")
+    public void enterUsernameAndPasswordAndClickLoginButton() {
+
+    }
 }
