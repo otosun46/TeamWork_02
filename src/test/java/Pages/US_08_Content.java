@@ -51,6 +51,15 @@ public class US_08_Content extends _Parent {
     @FindBy(xpath = "//span[text()=' Yes ']")
     private WebElement yesButton;
 
+    @FindBy(xpath = "//input[@class='mat-autocomplete-trigger mat-chip-input mat-input-element']")
+    private WebElement userTypeDropdown;
+
+    @FindBy(xpath = "//div[@id='toast-container']")
+    private WebElement msjContainer;
+
+    @FindBy(css = "button[mat-raised-button]")
+    private WebElement searchButton;
+
 
     @FindAll({
             @FindBy(xpath = "//div[@id='toast-container']")
@@ -131,6 +140,18 @@ public class US_08_Content extends _Parent {
                 myElement = nameInput;
                 break;
 
+            case "userTypeDropdown":
+                myElement = userTypeDropdown;
+                break;
+
+            case "msjContainer":
+                myElement = msjContainer;
+                break;
+
+            case "searchButton":
+                myElement = searchButton;
+                break;
+
         }
         beklet(250);
         return myElement;
@@ -201,7 +222,7 @@ public class US_08_Content extends _Parent {
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        //waitUntilClickable(searchButton);
+        waitUntilClickable(searchButton);
         List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
             btnList = deleteButtonList;
@@ -211,6 +232,7 @@ public class US_08_Content extends _Parent {
             System.out.println(nameList.get(i).getText());
             if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
                 clickFunction(btnList.get(i));
+                break;
             }
         }
     }

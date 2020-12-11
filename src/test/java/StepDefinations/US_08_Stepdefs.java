@@ -16,16 +16,18 @@ public class US_08_Stepdefs {
     @Given("^Navigate to Item Categories page$")
     public void navigateToItemCategoriesPage() {
         navbarContent.findElementAndClickFunction("inventory");
-        navbarContent.findElementAndClickFunction("setUp");
-        navbarContent.findElementAndClickFunction("itemCategories");
+        navbarContent.findElementAndClickFunction("inventSetup");
+        navbarContent.findElementAndClickFunction("ItemCategory");
 
     }
 
     @When("^Create a Item Categories as \"([^\"]*)\"$")
     public void createAItemCategoriesAs(String arg0)  {
-        navbarContent.findElementAndClickFunction("addButton");
-        navbarContent.findElementAndSendKeysFunction("nameInput", arg0); //name yerine isim yazdığımızda feature sayfasında istediğimiz isim değişikliğini yapabiliriz 'arg0' sayesinde
-        navbarContent.findElementAndClickFunction("saveButton");
+        us08Content.findElementAndClickFunction("addButton");
+        us08Content.findElementAndSendKeysFunction("nameInput", arg0); //name yerine isim yazdığımızda feature sayfasında istediğimiz isim değişikliğini yapabiliriz 'arg0' sayesinde
+        us08Content.findElementAndClickFunction("userTypeDropdown");
+        us08Content.findElementAndSelectOption("userTypeAllOptions","Student");
+        us08Content.findElementAndClickFunction("saveButton");
     }
 
     @Then("^Success message should be diplayed$")
@@ -35,7 +37,7 @@ public class US_08_Stepdefs {
 
     @When("^Edit the \"([^\"]*)\" to \"([^\"]*)\"$")
     public void editTheTo(String arg0, String arg1)  {
-        us08Content.editAndDeleteFunction(temp, "edit");
+        us08Content.editAndDeleteFunction(arg0, "edit");
         us08Content.findElementAndSendKeysFunction("nameInput",arg1);
         us08Content.findElementAndClickFunction("saveButton");
         temp = "";
@@ -43,7 +45,7 @@ public class US_08_Stepdefs {
 
     @When("^Delete the \"([^\"]*)\"$")
     public void deleteThe(String arg0)  {
-        us08Content.editAndDeleteFunction(temp, "delete");
+        us08Content.editAndDeleteFunction(arg0, "delete");
         us08Content.findElementAndClickFunction("yesButton");
         temp = "";
     }
