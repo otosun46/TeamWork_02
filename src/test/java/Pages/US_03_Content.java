@@ -198,6 +198,9 @@ public class US_03_Content extends _Parent{
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'.ADD')]//button")
     private WebElement accountAddButton;
 
+    @FindBy(css = "button[mat-raised-button]")
+    private WebElement searchButton;
+
     /********************** WEBELEMENTLIST *************************/
     @FindAll({
             @FindBy(xpath = "//div[@id='toast-container']")
@@ -427,6 +430,9 @@ public class US_03_Content extends _Parent{
             case "feeMsgText":
                 myElement = feeMsgText;
                 break;
+            case "searchButton":
+                myElement = searchButton;
+                break;
         }
         return myElement;
     }
@@ -481,8 +487,7 @@ public class US_03_Content extends _Parent{
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        //waitUntilClickable(feeSearchButton);
-        beklet(1000);
+        waitUntilClickable(searchButton);
         List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
             btnList = deleteButtonList;
@@ -495,6 +500,7 @@ public class US_03_Content extends _Parent{
             }
         }
     }
+
     public void switchToFrame(){
         driver.switchTo().parentFrame();
     }

@@ -13,10 +13,10 @@ Feature: User should be able to use Fees Page functionality
       | fees       |
 
     When User should be able to create a new Fee Type and name as
-      | feeName            | Toll_Fee1 |
-      | feeCodeInput       | TF006666   |
-      | feeIntegrationCode | 00006666   |
-      | feePriority        | 00006666   |
+      | feeName            | Toll_Fee |
+      | feeCodeInput       | TF01   |
+      | feeIntegrationCode | 066   |
+      | feePriority        | 6   |
 
     And User should be able to saved and displayed the successfully message
 
@@ -29,7 +29,7 @@ Feature: User should be able to use Fees Page functionality
 
     When  When User should be able to search Fee Type and name as
       | feeSearchName  | Toll_Fee |
-      | feeSearchCode  | TF000001   |
+      | feeSearchCode  | TF01   |
 
 
 
@@ -44,11 +44,10 @@ Feature: User should be able to use Fees Page functionality
 
 
     When User should be able to update an existent Fee Type named
-
-      | feeName            | Toll_Fee_Type2 |
-      | feeCodeInput       | FT-00001     |
-      | feeIntegrationCode | 00006667           |
-      | feePriority        | 0006655           |
+      | feeName            | Toll_Fee_Type1 |
+      | feeCodeInput       | FT-002     |
+      | feeIntegrationCode | 067           |
+      | feePriority        | 7           |
 
 
   Scenario: User should be able to delete an existent Fee Type
@@ -59,7 +58,7 @@ Feature: User should be able to use Fees Page functionality
       | fees       |
 
     When User should be able to delete an existent Fee Type named
-      | feeSearchName  | Toll_Fee_Type |
+      | feeSearchName  | Toll_Fee_Type1 |
 
 
 

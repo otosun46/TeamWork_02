@@ -15,7 +15,7 @@ public class US_03_Stepdefs {
     NavbarContent navbarContent = new NavbarContent();
     US_03_Content us_03_content = new US_03_Content();
 
-    String feeName="";
+    String feeName = "";
 
     @Given("^Click on the element to navigate to fee page$")
     public void clickOnTheElementToNavigateToFeePage(DataTable elements) {
@@ -37,7 +37,6 @@ public class US_03_Stepdefs {
             elementsNameAndValue.get(i).get(1);
             us_03_content.findElementAndClickFunction(elementsNameAndValue.get(i).get(0));
             us_03_content.findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
-            feeName=elementsNameAndValue.get(i).get(1);
         }
         us_03_content.findElementAndClickFunction("saveButton");
     }
@@ -48,9 +47,8 @@ public class US_03_Stepdefs {
 
     }
 
-
     @When("^When User should be able to search Fee Type and name as$")
-    public void whenUserShouldBeAbleToSearchFeeTypeAndNameAs(DataTable elements)  {
+    public void whenUserShouldBeAbleToSearchFeeTypeAndNameAs(DataTable elements) {
 
         List<List<String>> elementsNameAndValue = elements.asLists(String.class);
         for (int i = 0; i < elementsNameAndValue.size(); i++) {
@@ -58,15 +56,13 @@ public class US_03_Stepdefs {
             elementsNameAndValue.get(i).get(1);
             us_03_content.findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
         }
-        us_03_content.findElementAndClickFunction("feeSearchButton");
+        us_03_content.findElementAndClickFunction("searchButton");
     }
 
     @When("^User should be able to update an existent Fee Type named$")
     public void userShouldBeAbleToUpdateAnExistentFeeTypeNamed(DataTable elements) {
-        //us_03_content.findElementAndClickFunction("feeEditButton");
-        us_03_content.editAndDeleteFunction("Toll_Fee1","edit");
-
-
+        us_03_content.beklet(250);
+        us_03_content.findElementAndClickFunction("feeEditButton");
         List<List<String>> elementsNameAndValue = elements.asLists(String.class);
         for (int i = 0; i < elementsNameAndValue.size(); i++) {
             elementsNameAndValue.get(i).get(0);
@@ -79,19 +75,11 @@ public class US_03_Stepdefs {
         us_03_content.findElementAndVerifyContainsText("feeMsgText", "successfully");
     }
 
-
     @When("^User should be able to delete an existent Fee Type named$")
-    public void userShouldBeAbleToDeleteAnExistentFeeTypeNamed (DataTable elements)  {
-
-        List<List<String>> elementsNameAndValue = elements.asLists(String.class);
-
-        for (int i = 0; i < elementsNameAndValue.size(); i++) {
-            elementsNameAndValue.get(i).get(0);
-            elementsNameAndValue.get(i).get(1);
-            us_03_content.findElementAndClickFunction(elementsNameAndValue.get(i).get(0));
-            us_03_content.findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
-
-        }
+    public void userShouldBeAbleToDeleteAnExistentFeeTypeNamed(DataTable elements) {
+        us_03_content.usingElementsInTheDataTableAndSendKeys(elements);
+        us_03_content.findElementAndClickFunction("searchButton");
+        us_03_content.beklet(250);
         us_03_content.findElementAndClickFunction("feeDeleteButton");
         us_03_content.findElementAndClickFunction("feeYesButton");
         us_03_content.findElementAndVerifyContainsText("feeMsgText", "successfully");
