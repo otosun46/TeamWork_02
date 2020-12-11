@@ -14,6 +14,9 @@ public class NavbarContent extends _Parent {
     @FindBy(xpath = "//span[text()='Messaging']")
     private WebElement messaging;
 
+    @FindBy(xpath = "//span[text()='Notifications']")
+    private WebElement notifications;
+
     @FindBy(xpath = "//span[text()='Parameters']")
     private WebElement parameters;
 
@@ -37,6 +40,12 @@ public class NavbarContent extends _Parent {
 
     @FindBy(xpath = "//span[text()='Fees']")
     private WebElement fees;
+
+    @FindBy(xpath = "//span[text()='Discounts']")
+    private WebElement discounts;
+
+    @FindBy(xpath = "//span[text()='Document Types']")
+    private WebElement documentTypes;
 
     @FindBy(xpath = "(//span[text()='Entrance Exams'])[1]")
     private WebElement entranceExams;
@@ -104,6 +113,17 @@ public class NavbarContent extends _Parent {
             case "parameters":
                 myElement = parameters;
                 break;
+            case "documentTypes":
+                myElement = documentTypes;
+                break;
+
+            case "messaging":
+                myElement = messaging;
+                break;
+
+            case "notifications":
+                myElement = notifications;
+                break;
 
             case "country":
                 myElement = country;
@@ -126,6 +146,10 @@ public class NavbarContent extends _Parent {
             case "fees":
                 myElement = fees;
                 break;
+            case "discounts":
+                myElement = discounts;
+                break;
+
             case "entranceExams":
                 myElement = entranceExams;
                 break;

@@ -1,6 +1,4 @@
-/*
- * @Author:Group_2 Tarih :30/10/2020
- */
+
 package Utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

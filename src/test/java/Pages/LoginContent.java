@@ -22,7 +22,7 @@ public class LoginContent extends _Parent {
     private WebElement loginButton;
 
     @FindBy(linkText = "Got it!")
-    public WebElement gotItBtn;
+    private WebElement gotItBtn;
 
     @FindBy(id = "cookieconsent")
     public WebElement cookieConsent;
@@ -81,11 +81,6 @@ public class LoginContent extends _Parent {
      */
     public void findElementAndSendKeysFunction(String element, String value) {
         sendKeysFunction(findWebElement(element), value);
-    }
-
-    public void findElementAndSelectFunction(String element, String countryName) {
-
-        countrySelect(findWebElement(element), countryName);
     }
 
     /**
