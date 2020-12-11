@@ -159,6 +159,9 @@ public class Ornek_Content extends _Parent {
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'.ADD')]//button")
     private WebElement accountAddButton;
 
+    @FindBy(xpath = "//span[text()=' Search ']")
+    private WebElement searchButton;
+
     /********************** WEBELEMENTLIST *************************/
     @FindAll({
             @FindBy(xpath = "//div[@id='toast-container']")
@@ -436,27 +439,26 @@ public class Ornek_Content extends _Parent {
     }
 
     public void editAndDeleteFunction(String countryName, String editOrDelete) {
-        List<WebElement> btnList = new ArrayList<>();
-        // invisible olma beklemesini, display ise şartına bağladık, yani
-        // gözüküyorsa kaybolana kadar bekle.
-        beklet(500);
-//        if (msjContainers.size() > 0) {
-//            if (msjContainer.isDisplayed())
-//                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
-//        }
+        waitUntilClickable(searchButton);
+        List<WebElement> btnList;
         if (editOrDelete.equalsIgnoreCase("delete")) {
-            btnList = waitVisibleListAllElement(deleteButtonList);
-        } else btnList = waitVisibleListAllElement(editButtonList);
+            btnList = deleteButtonList;
+        } else btnList = editButtonList;
 
-        for (int i = 0; i < waitVisibleListAllElement(nameList).size(); i++) {
-            System.out.println(waitVisibleListAllElement(nameList).get(i).getText());
-            if (waitVisibleListAllElement(nameList).get(i).getText().equalsIgnoreCase(countryName)) {
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.println(nameList.get(i).getText());
+            if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
                 clickFunction(btnList.get(i));
             }
         }
     }
+
     public void switchToFrame(){
         driver.switchTo().parentFrame();
+    }
+
+    public void switchToFrame(String frame) {
+        driver.switchTo().frame(findWebElement(frame));
     }
 
     public void invisibleElementClick(String element){
@@ -478,5 +480,21 @@ public class Ornek_Content extends _Parent {
             findElementAndSelectOption(listName, elementsName.get(i));
         }
     }
+
+    public void writeInPElements( ){
+        scrollToElement(findWebElement("emailBody"));
+
+        System.out.println("meto");
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].textContent = arguments[1];", findWebElement("emailBody"), "This is a test");
+    }
+
+    public void writeInPElements(DataTable elements){
+        List<List<String>> elementsNameAndValue = elements.asLists(String.class);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        for (int i = 0; i < elementsNameAndValue.size(); i++) {
+            scrollToElement(findWebElement(elementsNameAndValue.get(i).get(0)));
+            executor.executeScript("arguments[0].textContent = arguments[1];", findWebElement(elementsNameAndValue.get(i).get(0)), elementsNameAndValue.get(i).get(1));
+        }}
 }
 
