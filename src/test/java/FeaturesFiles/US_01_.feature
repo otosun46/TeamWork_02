@@ -18,14 +18,13 @@ Feature: User should be able to use Citizenships Page functionality
 
     And Check  control whether succesfully message displayed
 
-    And User should be able to update an existant Citizenships
-
+    And User should be able to searching Citizenships
       | searchNameInput    | HalUk    |
       | searchShortNameInput | Vicdan         |
+
+    And User should be able to update an existant Citizenships
       | nameInput          | HalUkBilgin |
       | shortNameInput     | VicdanLi     |
-
-
 
 
     And Check  control whether succesfully message displayed

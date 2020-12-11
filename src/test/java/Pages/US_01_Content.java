@@ -3,6 +3,7 @@ package Pages;
 import cucumber.api.DataTable;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,9 +64,27 @@ public class US_01_Content extends _Parent {
     @FindBy(xpath = "//div[@role='alertdialog']")
     private WebElement errorAlert;
 
+    @FindBy(xpath = "//div[@id='toast-container']")
+    private WebElement msjContainer;
 
-    public void findElementAndClickFunction(String elementName) {
-        switch (elementName) {
+    @FindAll({
+            @FindBy(xpath = "//ms-delete-button/button")
+    })
+    private List<WebElement> deleteButtonList;
+
+    @FindAll({
+            @FindBy(xpath = "//ms-edit-button/button")
+    })
+    private List<WebElement> editButtonList;
+
+    @FindAll({
+            @FindBy(xpath = "//table/tbody/tr/td[2]")
+    })
+    private List<WebElement> nameList;
+
+
+    public WebElement findWebElement(String webElementName) {
+        switch (webElementName) {
             case "addButton":
                 myElement = addButton;
                 break;
@@ -101,12 +120,6 @@ public class US_01_Content extends _Parent {
             case "yesButton":
                 myElement = yesButton;
                 break;
-        }
-        clickFunction(myElement);
-    }
-
-    public void findElementAndSendKeysFunction(String webElementName,String value) {
-        switch (webElementName) {
             case "nameInput":
                 myElement = nameInput;
                 break;
@@ -122,25 +135,32 @@ public class US_01_Content extends _Parent {
             case "searchShortNameInput":
                 myElement = searchShortNameInput;
                 break;
+            case "msjContainer":
+                myElement = msjContainer;
+                break;
         }
-        sendKeysFunction(myElement,value);
+        return myElement;
     }
+    /**
+     * Returns the WebElementList whose name is entered as a parameter.
+     *
+     * @param webElementListName
+     * @return
+     */
+    public List<WebElement> findWebElementList(String webElementListName) {
+        switch (webElementListName) {
 
-    public void waitUntilNeed(String elementName){
-        switch (elementName){
-            case "afterSearchDelete":
-                myElement=afterSearchDelete;
+            case "deleteButtonList":
+                myElementList = deleteButtonList;
                 break;
-
-            case "editAfterSearch":
-                myElement=editAfterSearch;
+            case "editButtonList":
+                myElementList = editButtonList;
                 break;
-
-            case "addButton":
-                myElement=addButton;
+            case "nameList":
+                myElementList = nameList;
                 break;
         }
-        waitUntilVisible(myElement);
+        return myElementList;
     }
 
     public  void needToScroll(String elementName) {
@@ -151,19 +171,58 @@ public class US_01_Content extends _Parent {
         }
         scrollToElement(myElement);
     }
-    public void checkControl(String elementName,String Msg){
-        switch (elementName){
-            case "succesAlert":
-                myElement=succesAlert;
-                break;
 
-            case "errorAlert" :
-                myElement=errorAlert;
-                break;
+    public void usingElementsInTheDataTableAndSendKeys(DataTable elements) {
+        List<List<String>> elementsNameAndValue = elements.asLists(String.class);
+        for (int i = 0; i < elementsNameAndValue.size(); i++) {
+            findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));
         }
-        wait.until(ExpectedConditions.textToBePresentInElement(myElement,Msg));
-        Assert.assertTrue(myElement.getText().toLowerCase().contains(Msg.toLowerCase()));
+    }
+    /**
+     * Finds the WebElement whose name is sent as parameter and
+     * verifies that msg entered as parameter exists in the text of the WebElement.
+     *
+     * @param elementName
+     * @param msg
+     */
+    public void findElementAndVerifyContainsText(String elementName, String msg) {
+        verifyElementContainsText(findWebElement(elementName), msg);
     }
 
+    /**
+     * This method takes the name of the WebElement to be executed from the steps class,
+     * whose parameter will be clicked as a string.
+     *
+     * @param element
+     */
+    public void findElementAndClickFunction(String element) {
+        clickFunction(findWebElement(element));
+    }
 
+    /**
+     * Finds the WebElement named as parameter and sends the value parameter to the selected WebElement.
+     *
+     * @param element
+     * @param value
+     */
+    public void findElementAndSendKeysFunction(String element, String value) {
+        scrollToElement(findWebElement(element));
+        sendKeysFunction(findWebElement(element), value);
+    }
+
+    public void editAndDeleteFunction(String countryName, String editOrDelete) {
+        waitUntilClickable(searchButton);
+        beklet(250);
+        List<WebElement> btnList;
+        if (editOrDelete.equalsIgnoreCase("delete")) {
+            btnList = deleteButtonList;
+        } else btnList = editButtonList;
+
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.println(nameList.get(i).getText());
+            if (nameList.get(i).getText().equalsIgnoreCase(countryName)) {
+                clickFunction(btnList.get(i));
+            }
+        }
+    }
 }
