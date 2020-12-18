@@ -3,6 +3,7 @@
  */
 package Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -103,6 +104,10 @@ public class NavbarContent extends _Parent {
 
     @FindBy(xpath = "//span[text()='Cost Centers']")
     private WebElement costCenters;
+
+    @FindBy(xpath = "//a[@href='/budget-projects/list']")
+    private WebElement budProjects;
+
 
     public WebElement findWebElement(String webElementName) {
         switch (webElementName) {
@@ -207,6 +212,9 @@ public class NavbarContent extends _Parent {
             case "costCenters":
                 myElement = costCenters;
                 break;
+            case "budProjects":
+                myElement = budProjects;
+                break;
         }
         return myElement;
     }
@@ -229,5 +237,6 @@ public class NavbarContent extends _Parent {
     public void findElementAndSendKeysFunction(String element, String value) {
         sendKeysFunction(findWebElement(element), value);
     }
+
 
 }
