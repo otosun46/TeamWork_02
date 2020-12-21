@@ -15,6 +15,14 @@ public class US_05_Stepdefs {
         navbarContent.findElementAndClickFunction("setupOne");
         navbarContent.findElementAndClickFunction("parameters");
         navbarContent.findElementAndClickFunction("gradeLevels");
+        us_05_content.findElementAndClickFunction("addButton");
+        us_05_content.findElementAndSendKeysFunction("nameInput","niva3");
+        us_05_content.findElementAndSendKeysFunction("shortNameInput", "nv3");
+        us_05_content.findElementAndSendKeysFunction("orderInput","12");
+        us_05_content.findElementAndClickFunction("combo");
+        //us_05_content.findElementAndClickFunction("option");
+        us_05_content.findElementAndSelectOption("option","Techno1");
+        us_05_content.findElementAndClickFunction("saveButton");
     }
 
     @Then("^User should be able to update an existant Grade Level$")
