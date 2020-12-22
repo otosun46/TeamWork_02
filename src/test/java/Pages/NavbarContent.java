@@ -65,6 +65,7 @@ public class NavbarContent extends _Parent {
     @FindBy(xpath = "(//span[text()='Setup'])[3]")
     private WebElement hR_Setup;
 
+
     @FindBy(xpath = "//span[text()='Position Salary']")
     private WebElement positionSalary;
 
@@ -165,6 +166,7 @@ public class NavbarContent extends _Parent {
             case "hR_Setup":
                 myElement = hR_Setup;
                 break;
+
             case "positionSalary":
                 myElement = positionSalary;
                 break;

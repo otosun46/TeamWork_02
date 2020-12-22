@@ -8,7 +8,7 @@ Feature: User should be able to use Attestations Page functionality
     Then User must login successfully
 Scenario:
   When User should be able to view Attestations page
-  Then User  should be able to create an Attestation and view  successfully validating the message
-  And User should  be able to edit Attestation and view  successfully validating the message
-
+  Then User  should be able to create an Attestation name as "Sena1" and view  successfully validating the message
+  And User should  be able to edit Attestation update "Sena1" to "Neda1" and view  successfully validating the message
+  And User should be
 
