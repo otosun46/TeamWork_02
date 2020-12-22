@@ -25,7 +25,6 @@ public class US_02_Stepdefs {
     @When("^Success message sould be displayed$")
     public void successMessageSouldBeDisplayed() {
        us_02_content.findElementAndVerifyContainsText("msjContainer","successfully");
-    }
 
 
     @When("^User should be able from \"([^\"]*)\" to \"([^\"]*)\" update an existant Nationality$")
