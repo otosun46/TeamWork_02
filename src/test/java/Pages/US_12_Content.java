@@ -7,11 +7,10 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class US_02_Content extends _Parent {
-    public US_02_Content() {
+public class US_12_Content extends _Parent {
+    public US_12_Content() {
         PageFactory.initElements(driver, this);
     }
 
