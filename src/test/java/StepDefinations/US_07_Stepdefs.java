@@ -40,13 +40,13 @@ public class US_07_Stepdefs {
     @And("^Notification should be activated and able to select SMS$")
     public void notificationShouldBeActivatedAndAbleToSelectSMS() {
         //us07Content.findElementAndClickFunction("slideActive");
-        us07Content.findElementAndClickFunction("tabSMS");
+        us07Content.findElementAndClickFunction("tabFirst");
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
     }
 
     @And("^Notification should be activated and able to select mail$")
     public void notificationShouldBeActivatedAndAbleToSelectEmail() {
-        us07Content.findElementAndClickFunction("tabEmail");
+        us07Content.findElementAndClickFunction("tabSecond");
         us07Content.beklet(750);
         us07Content.findElementAndClickFunction("slideSendSMSorEmail");
     }
