@@ -14,6 +14,8 @@ public class US_12_Content extends _Parent {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "(//span[text()='Attestations'])[1]")
+    private WebElement attestations;
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
     private WebElement addButton;
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']/input")
@@ -22,7 +24,6 @@ public class US_12_Content extends _Parent {
     private WebElement msjContainer;
     @FindBy(css = "button[aria-label='Close dialog']")
     private WebElement closeDialog;
-
 
     @FindBy(xpath = "//ms-save-button//button")
     private WebElement saveButton;
@@ -86,6 +87,10 @@ public class US_12_Content extends _Parent {
      */
     public WebElement findWebElement(String webElementName) {
         switch (webElementName) {
+            case "attestations":
+                myElement = attestations;
+                break;
+
             case "addButton":
                 myElement = addButton;
                 break;
