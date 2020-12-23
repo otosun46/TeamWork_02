@@ -7,8 +7,8 @@ Feature: User should be able to use Attestations Page functionality
 
   Scenario:
 
-    When User should be able to view Attestations page
-    Then User  should be able to create an Attestation "Nihal" and view  successfully validating the message
-    Then User should  be able to edit from "Nihal" to "Zülal" Attestation and view  successfully validating the message
-    And  User should be able to delete "Zülal"  Attestation and view  successfully validating the message
+    When User should be able to view Attestations page_HH
+    Then User  should be able to create an Attestation "Nihal" and view  successfully validating the message_HH
+    Then User should  be able to edit from "Nihal" to "Zülal" Attestation and view  successfully validating the message_HH
+    And  User should be able to delete "Zülal"  Attestation and view  successfully validating the message_HH
     And  searching by  name , the results should be matched the search terms.

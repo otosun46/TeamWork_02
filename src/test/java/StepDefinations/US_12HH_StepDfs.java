@@ -12,16 +12,17 @@ public class US_12HH_StepDfs {
     US_12HH_Content us_12HH_content=new US_12HH_Content();
 
 
-    @When("^User should be able to view Attestations page$")
+    @When("^User should be able to view Attestations page_HH$")
     public void userShouldBeAbleToViewAttestationsPage() {
 
         navbarContent.findElementAndClickFunction("humanResources");
         navbarContent.findElementAndClickFunction("hR_Setup");
+        us_12HH_content.scrollToElement(us_12HH_content.findWebElement("attestations"));
         us_12HH_content.findElementAndClickFunction("attestations");
 
     }
 
-    @Then("^User  should be able to create an Attestation \"([^\"]*)\" and view  successfully validating the message$")
+    @Then("^User  should be able to create an Attestation \"([^\"]*)\" and view  successfully validating the message_HH$")
     public void userShouldBeAbleToCreateAnAttestationAndViewSuccessfullyValidatingTheMessage(String arg0) {
         us_12HH_content.findElementAndClickFunction("addButton");
         us_12HH_content.findElementAndSendKeysFunction("nameInput",arg0);
@@ -36,7 +37,7 @@ public class US_12HH_StepDfs {
 
     }
 
-    @And("^User should be able to delete \"([^\"]*)\"  Attestation and view  successfully validating the message$")
+    @And("^User should be able to delete \"([^\"]*)\"  Attestation and view  successfully validating the message_HH$")
     public void userShouldBeAbleToDeleteAttestationAndViewSuccessfullyValidatingTheMessage(String arg0)  {
 
         us_12HH_content.scrollToElement(us_12HH_content.findWebElement("searchName"));
@@ -51,7 +52,7 @@ public class US_12HH_StepDfs {
     public void searchingByNameTheResultsShouldBeMatchedTheSearchTerms() {
     }
 
-    @Then("^User should  be able to edit from \"([^\"]*)\" to \"([^\"]*)\" Attestation and view  successfully validating the message$")
+    @Then("^User should  be able to edit from \"([^\"]*)\" to \"([^\"]*)\" Attestation and view  successfully validating the message_HH$")
     public void userShouldBeAbleToEditFromToAttestationAndViewSuccessfullyValidatingTheMessage(String arg0, String arg1) {
         us_12HH_content.scrollToElement(us_12HH_content.findWebElement("searchName"));
         us_12HH_content.findElementAndSendKeysFunction("searchName",arg0);
