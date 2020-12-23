@@ -44,11 +44,15 @@ public class US_12_Stepdefs {
         us_12_content.editAndDeleteFunction(arg0,"edit");
         us_12_content.findElementAndSendKeysFunction("nameInput",arg1);
         us_12_content.findElementAndClickFunction("saveButton");
-        us_12_content.findElementAndClickFunction("addButton");
-        us_12_content.findElementAndSendKeysFunction("nameInput","Neda");
-        us_12_content.findElementAndClickFunction("saveButton");
-        us_12_content.findElementAndVerifyContainsText("msjContainer","Error");
-        us_12_content.findElementAndClickFunction("closeDialog");
 
+    }
+
+
+    @And("^User should be able to delete \"([^\"]*)\"  Attestation and view  successfully validating the message$")
+    public void userShouldBeAbleToDeleteAttestationAndViewSuccessfullyValidatingTheMessage(String arg0) {
+        us_12_content.findElementAndSendKeysFunction("searchName",arg0);
+        us_12_content.findElementAndClickFunction("searchButton");
+        us_12_content.editAndDeleteFunction(arg0,"delete");
+        us_12_content.findElementAndClickFunction("yesButton");
     }
 }
