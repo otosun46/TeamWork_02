@@ -32,8 +32,14 @@ public class US_10_Content extends _Parent {
     @FindBy(css = "mat-select[formcontrolname='type']")
     private WebElement type;
 
-    @FindBy(xpath = "//div/h3[text()='  Notifications ']")
-    private WebElement notificationsPage;
+    @FindBy(css = "mat-form-field[formgroupname='budgetGroup']")
+    private WebElement budgetGroup;
+
+    @FindBy(css = "mat-form-field[formgroupname='school']")
+    private WebElement school;
+
+    @FindBy(xpath = "//div/h3[text()='  Budgets ']")
+    private WebElement budgetsPage;
 
     @FindBy(xpath = "(//div[@role='tab'])[1]")
     private WebElement tabFirst;
@@ -79,6 +85,9 @@ public class US_10_Content extends _Parent {
 
     @FindBy(xpath = "//span[text()=' Yes ']")
     private WebElement yesButton;
+
+    @FindBy(xpath = "//button[@aria-label='Close dialog']")
+    private WebElement closeButton;
 
     /********************** WEBELEMENTLIST *************************/
     @FindAll({
@@ -139,8 +148,14 @@ public class US_10_Content extends _Parent {
             case "type":
                 myElement = type;
                 break;
-            case "notificationsPage":
-                myElement = notificationsPage;
+            case "budgetGroup":
+                myElement = budgetGroup;
+                break;
+            case "school":
+                myElement = school;
+                break;
+            case "budgetsPage":
+                myElement = budgetsPage;
                 break;
             case "tabFirst":
                 myElement = tabFirst;
@@ -162,6 +177,9 @@ public class US_10_Content extends _Parent {
                 break;
             case "description":
                 myElement = description;
+                break;
+            case "year":
+                myElement = year;
                 break;
             case "textSMS":
                 myElement = textSMS;
@@ -189,6 +207,9 @@ public class US_10_Content extends _Parent {
                 break;
             case "yesButton":
                 myElement = yesButton;
+                break;
+            case "closeButton":
+                myElement = closeButton;
                 break;
             case "emailFramealt":
                 myElement = emailFramealt;
@@ -322,6 +343,7 @@ public class US_10_Content extends _Parent {
         for (int i = 0; i < elementsName.size(); i++) {
             findElementAndClickFunction(elementsName.get(i));
             i++;
+            beklet(250);
             findElementAndSelectOption(listName, elementsName.get(i));
         }
     }
