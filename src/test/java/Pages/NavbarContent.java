@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class NavbarContent extends _Parent {
+//ana sayfada olan herşey navbarda
 
     @FindBy(xpath = "(//span[text()='Setup'])[1]")
     private WebElement setupOne;
