@@ -6,6 +6,7 @@ package StepDefinations;
 import Pages.NavbarContent;
 import Pages.US_10_Content;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -37,8 +38,6 @@ public class US_10_Stepdefs {
         us10Content.usingElementsInTheDataTableAndSelectOptions(elements,"option");
     }
 
-
-
     @Then("^Save created budgets$")
     public void saveCreatedBudgets() {
         us10Content.findElementAndClickFunction("saveButton");
@@ -47,5 +46,11 @@ public class US_10_Stepdefs {
     @And("^User should verify that the budget is not saved$")
     public void userShouldVerifyThatTheBudgetIsNotSaved() {
 
+    }
+
+    @Then("^User  should be able to delete  \"([^\"]*)\" Budgets$")
+    public void userShouldBeAbleToDeleteBudgets(String arg0){
+        us10Content.editAndDeleteFunction(arg0, "delete");
+        us10Content.findElementAndClickFunction("yesButton");
     }
 }

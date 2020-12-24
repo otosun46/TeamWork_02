@@ -26,3 +26,8 @@ Feature: User should be able to Item Budgets functionality.(Budget)
     And Click and Select options
       | type        | 0 |
     And User should verify that the budget is not saved
+
+  Scenario: User should be able to delete  Budgets and view  successfully validating the message
+    Given Navigate to Budgets page
+    When User  should be able to delete  "Deneme123" Budgets
+    Then User should be able to view the verification message successfully
