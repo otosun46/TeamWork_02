@@ -61,6 +61,7 @@ public class US_14_Stepdefs {
 
     @Then("^Success message should be diplayed\\.$")
     public void successMessageShouldBeDiplayed() {
-        us14Content.findElementAndVerifyContainsText("feeMsgText", "successfully");
+        us14Content.findElementAndVerifyContainsText("MsgText", "successfully");
+
     }
 }
