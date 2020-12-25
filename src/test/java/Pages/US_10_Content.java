@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -362,4 +363,13 @@ public class US_10_Content extends _Parent {
             scrollToElement(findWebElement(elementsNameAndValue.get(i).get(0)));
             executor.executeScript("arguments[0].textContent = arguments[1];", findWebElement(elementsNameAndValue.get(i).get(0)), elementsNameAndValue.get(i).get(1));
         }}
+
+    public void isMyElementDisable(WebElement element){
+        Assert.assertFalse(element.isEnabled());
+    }
+
+    public void findElementAndVerifyDisabled(String elementName) {
+        isMyElementDisable(findWebElement(elementName));
+    }
+
 }
