@@ -45,7 +45,7 @@ public class US_10_Stepdefs {
 
     @And("^User should verify that the budget is not saved$")
     public void userShouldVerifyThatTheBudgetIsNotSaved() {
-
+        us10Content.findElementAndVerifyDisabled("saveButton");
     }
 
     @Then("^User  should be able to delete  \"([^\"]*)\" Budgets$")
